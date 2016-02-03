@@ -7,10 +7,12 @@
 //
 
 #import "ImagesTableViewController.h"
+#import "DataSource.h"
+#import "Media.h"
+#import "User.h"
+#import "Comment.h"
 
 @interface ImagesTableViewController ()
-
-@property (nonatomic, strong) NSMutableArray *images;
 
 @end
 
@@ -22,7 +24,6 @@
     if (self) {
         
         // Custom Initialization, we initialize an empty mutable array called images
-        self.images = [NSMutableArray array];
     
     }
     return self;
@@ -31,21 +32,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    for (int i = 1; i <= 10; i++){
-        
-        // Getting the name of the image
-        NSString *imageName = [NSString stringWithFormat:@"%d.jpg", i];
-        
-        // Getting a UI Image with that name
-        UIImage *image = [UIImage imageNamed:imageName];
-        
-        // If there is an image, then add the image object to the image array
-        if (image) {
-            
-            [self.images addObject:image];
-            
-        }
-    }
+//    for (int i = 1; i <= 10; i++){
+//        
+//        // Getting the name of the image
+//        NSString *imageName = [NSString stringWithFormat:@"%d.jpg", i];
+//        
+//        // Getting a UI Image with that name
+//        UIImage *image = [UIImage imageNamed:imageName];
+//        
+//        // If there is an image, then add the image object to the image array
+//        if (image) {
+//            
+//            [self.images addObject:image];
+//            
+//        }
+//    }
     
     // Reuse Identifer name for the type of cell we will use in the table view
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
@@ -62,7 +63,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
     
-    return self.images.count;
+    return [DataSource sharedInstance].mediaItems.count;
 }
 
 
@@ -92,18 +93,26 @@
         
     }
     
-    UIImage *image = self.images[indexPath.row];
-    imageView.image = image;
+//    UIImage *image = self.images[indexPath.row];
+//    imageView.image = image;
+
+    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    imageView.image = item.image;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Return a correctly scaled down size of the image
-    UIImage *image = self.images[indexPath.row];
-    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
+//    // Return a correctly scaled down size of the image
+//    UIImage *image = self.images[indexPath.row];
+//    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
     
+    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    UIImage *image = item.image;
+    
+    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
+
 }
 
 // Override to support conditional editing of the table view.
@@ -117,7 +126,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         // Remove the object in the array
-        [self.images removeObjectAtIndex:indexPath.row];
+//        [[DataSource sharedInstance].mediaItems. removeObjectAtIndex:indexPath.row];
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
