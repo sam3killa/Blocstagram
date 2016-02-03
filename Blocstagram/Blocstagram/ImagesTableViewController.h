@@ -10,4 +10,6 @@
 
 @interface ImagesTableViewController : UITableViewController
 
+- (NSMutableArray *) items;
+
 @end

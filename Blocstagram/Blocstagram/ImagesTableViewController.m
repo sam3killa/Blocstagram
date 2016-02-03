@@ -23,14 +23,15 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        // Custom Initialization, we initialize an empty mutable array called images
-    
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    self.items  = [DataSource sharedInstance].mediaItems;
 
 //    for (int i = 1; i <= 10; i++){
 //        
@@ -50,6 +51,14 @@
     
     // Reuse Identifer name for the type of cell we will use in the table view
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
+    
+}
+
+// Method that returns the Datasource sharedInstance media items
+- (NSArray *) items {
+
+    return [DataSource sharedInstance].mediaItems;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,9 +70,8 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     
-    return [DataSource sharedInstance].mediaItems.count;
+    return [self items].count;
 }
 
 
@@ -96,7 +104,7 @@
 //    UIImage *image = self.images[indexPath.row];
 //    imageView.image = image;
 
-    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    Media *item = [self items][indexPath.row];
     imageView.image = item.image;
     
     return cell;
@@ -108,7 +116,7 @@
 //    UIImage *image = self.images[indexPath.row];
 //    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
     
-    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    Media *item = [self items][indexPath.row];
     UIImage *image = item.image;
     
     return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
@@ -126,7 +134,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         // Remove the object in the array
-//        [[DataSource sharedInstance].mediaItems. removeObjectAtIndex:indexPath.row];
+        [[self items] removeObjectAtIndex:indexPath.row];
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
