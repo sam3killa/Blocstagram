@@ -13,7 +13,6 @@
 @interface Comment : NSObject
 
 @property (nonatomic, strong) NSString *idNumber;
-
 @property (nonatomic, strong) User *from;
 @property (nonatomic, strong) NSString *text;
 

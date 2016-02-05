@@ -40,6 +40,7 @@ static UIColor *linkColor;
 // Set properties like alignment, indentaiton, spacing etc.
 static NSParagraphStyle *paragraphStyle;
 
+
 @implementation MediaTableCell
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -130,6 +131,11 @@ static NSParagraphStyle *paragraphStyle;
 - (void) layoutSubviews {
     [super layoutSubviews];
 
+    if (!self.mediaItem) {
+    
+        return ;
+    }
+    
     // Creating the subviews within the custom cell
     CGFloat imageHeight = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
     self.mediaImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), imageHeight);
@@ -182,8 +188,6 @@ static NSParagraphStyle *paragraphStyle;
     self.commentLabel.attributedText = [self commentString];
 
 }
-
-
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width {
     // Make a cell

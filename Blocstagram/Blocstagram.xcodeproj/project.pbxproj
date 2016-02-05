@@ -25,7 +25,6 @@
 		8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6243FD1C62AC2B0043985C /* MediaTableCell.m */; };
 		8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F291C5F1D50008A3BA7 /* main.m */; };
 		8AC29F2D1C5F1D50008A3BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */; };
-		8AC29F301C5F1D50008A3BA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F2F1C5F1D50008A3BA7 /* ViewController.m */; };
 		8AC29F331C5F1D50008A3BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC29F311C5F1D50008A3BA7 /* Main.storyboard */; };
 		8AC29F351C5F1D50008A3BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AC29F341C5F1D50008A3BA7 /* Assets.xcassets */; };
 		8AC29F381C5F1D50008A3BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC29F361C5F1D50008A3BA7 /* LaunchScreen.storyboard */; };
@@ -77,8 +76,6 @@
 		8AC29F291C5F1D50008A3BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AC29F2B1C5F1D50008A3BA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8AC29F2E1C5F1D50008A3BA7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8AC29F2F1C5F1D50008A3BA7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8AC29F321C5F1D50008A3BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AC29F341C5F1D50008A3BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AC29F371C5F1D50008A3BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -171,8 +168,6 @@
 				8A2D0C0A1C616F6600203F6D /* Comment.m */,
 				8A2D0C061C616DDE00203F6D /* Media.h */,
 				8A2D0C071C616DDE00203F6D /* Media.m */,
-				8AC29F2E1C5F1D50008A3BA7 /* ViewController.h */,
-				8AC29F2F1C5F1D50008A3BA7 /* ViewController.m */,
 				8AC29F311C5F1D50008A3BA7 /* Main.storyboard */,
 				8AC29F341C5F1D50008A3BA7 /* Assets.xcassets */,
 				8AC29F361C5F1D50008A3BA7 /* LaunchScreen.storyboard */,
@@ -352,7 +347,6 @@
 				8A2D0C081C616DDE00203F6D /* Media.m in Sources */,
 				8A2D0C0E1C6170E100203F6D /* DataSource.m in Sources */,
 				8A2D0C051C616C1700203F6D /* User.m in Sources */,
-				8AC29F301C5F1D50008A3BA7 /* ViewController.m in Sources */,
 				8AC29F2D1C5F1D50008A3BA7 /* AppDelegate.m in Sources */,
 				8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */,
 				8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */,
