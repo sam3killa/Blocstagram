@@ -124,16 +124,17 @@ static NSParagraphStyle *commentRightAlignStyle;
         // Make a string that says "username" followed by the comment in the next line
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
         
-        // Make an attributed string, with the "username" bold
-//        NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
+
         
-        NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString];
+       // NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString];
+        
+        NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : count % 2 == 0 ? commentRightAlignStyle : paragraphStyle}];
         
         // Range of username
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
-        [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:usernameRange];
+//        [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:usernameRange];
         
         // Range of comment
         NSRange commentRange = [baseString rangeOfString:comment.text];
@@ -147,14 +148,6 @@ static NSParagraphStyle *commentRightAlignStyle;
         }
         
         // Every other comment right-align
-        if (count % 2 == 1) {
-            
-            [oneCommentString addAttribute:NSParagraphStyleAttributeName value:commentRightAlignStyle range:commentRange];
-            
-            // Testing Rule
-//            [oneCommentString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:commentRange];
-
-        }
         
         // Increase the count number by 1
         count++;
