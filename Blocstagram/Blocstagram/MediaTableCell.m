@@ -152,7 +152,7 @@ static NSParagraphStyle *commentRightAlignStyle;
             [oneCommentString addAttribute:NSParagraphStyleAttributeName value:commentRightAlignStyle range:commentRange];
             
             // Testing Rule
-            [oneCommentString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:commentRange];
+//            [oneCommentString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:commentRange];
 
         }
         
