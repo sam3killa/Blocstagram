@@ -239,7 +239,7 @@ static NSParagraphStyle *commentRightAlignStyle;
                                                                                    views:viewDictionary]];
    
         self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100];
-    
+        
         self.imageHeightConstraint.identifier = @"Image height constraint";
 
         self.usernameAndCaptionLabelHeightConstraint = [NSLayoutConstraint constraintWithItem:_usernameAndCaptionLabel
@@ -258,6 +258,7 @@ static NSParagraphStyle *commentRightAlignStyle;
                                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                                         multiplier:1
                                                                           constant:100];
+        
         self.commentLabelHeightConstraint.identifier = @"Comment label height constraint";
         
         [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
