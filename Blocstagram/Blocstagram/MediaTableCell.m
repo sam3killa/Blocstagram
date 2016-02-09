@@ -197,7 +197,7 @@ static NSParagraphStyle *commentRightAlignStyle;
     
     self.usernameAndCaptionLabelHeightConstraint.constant = usernameLabelSize.height + 20;
     self.commentLabelHeightConstraint.constant = commentLabelSize.height + 20;
-    self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
+//    self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
     
     // Hide the line between cells
     self.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(self.bounds)/2.0, 0, CGRectGetWidth(self.bounds)/2.0);
