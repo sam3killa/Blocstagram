@@ -6,7 +6,7 @@
 //  Copyright © 2016 Samuel Shih. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>a
+#import <UIKit/UIKit.h>
 
 // Add the media class
 @class Media;

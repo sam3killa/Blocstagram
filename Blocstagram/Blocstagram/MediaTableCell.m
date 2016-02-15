@@ -223,6 +223,7 @@ static NSParagraphStyle *commentRightAlignStyle;
         // Add each UI element to the table view cell content view
         for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel]) {
             
+            // contentView is specific to UITableViewCell
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         

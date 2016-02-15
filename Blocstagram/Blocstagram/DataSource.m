@@ -11,10 +11,12 @@
 #import "Media.h"
 #import "User.h"
 
-@interface DataSource ()
+@interface DataSource () {
 
 // This property can only be modified by the data source
-@property (nonatomic, strong) NSArray *mediaItems;
+    NSMutableArray *_mediaItems;
+    
+}
 
 @end
 
@@ -48,6 +50,25 @@
     return self;
 }
 
+#pragma mark - Key/Value Observing
+
+- (NSUInteger) countOfMediaItems {
+
+    return self.mediaItems.count;
+    
+}
+
+- (id) objectIn_mediaItemsAtIndex:(NSUInteger)index {
+    
+    return [self.mediaItems objectAtIndex:index];
+    
+}
+
+- (NSArray *) mediaItemsAtIndexes:(NSIndexSet *)indexes {
+    
+    return [self.mediaItems objectsAtIndexes:indexes];
+    
+}
 
 -(void) addRandomData {
     
