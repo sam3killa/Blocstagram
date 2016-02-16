@@ -17,7 +17,7 @@
 + (instancetype) sharedInstance;
 
 // Read only so other classes can't modify it
-@property (nonatomic, strong, readonly) NSArray *mediaItems;
+@property (nonatomic, strong, readonly) NSMutableArray *mediaItems;
 
 - (void) deleteMediaItem:(Media *)item;
 

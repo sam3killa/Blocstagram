@@ -139,10 +139,19 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source
         Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
-        [[DataSource sharedInstance] deleteMediaItem:item];
+        
+        [[DataSource sharedInstance].mediaItems insertObject:item atIndex:0];
+        
+       // [[DataSource sharedInstance] deleteMediaItem:item];
+        
+        
+        NSLog(@"Triggered %@", [DataSource sharedInstance].mediaItems);
     }
+    
+    
 
 }
 
