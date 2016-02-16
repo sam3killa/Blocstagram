@@ -58,7 +58,7 @@
     
 }
 
-- (id) objectIn_mediaItemsAtIndex:(NSUInteger)index {
+- (id) objectInmediaItemsAtIndex:(NSUInteger)index {
     
     return [self.mediaItems objectAtIndex:index];
     
@@ -67,6 +67,30 @@
 - (NSArray *) mediaItemsAtIndexes:(NSIndexSet *)indexes {
     
     return [self.mediaItems objectsAtIndexes:indexes];
+    
+}
+
+
+- (void) insertObject:(Media *)object inMediaItemsAtIndex:(NSUInteger)index {
+
+    [_mediaItems insertObject:object atIndex:index];
+
+}
+
+- (void) deleteMediaItem:(Media *)item {
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    [mutableArrayWithKVO removeObject:item];
+}
+
+- (void) removeObjectFromMediaItemsAtIndex:(NSUInteger)index {
+    
+    [_mediaItems removeObjectAtIndex:index];
+    
+}
+
+- (void) replaceObjectInMediaItemsAtIndex:(NSUInteger)index withObject:(id)object {
+
+    [_mediaItems replaceObjectAtIndex:index withObject:object];
     
 }
 
@@ -103,7 +127,7 @@
         }
     }
 
-    self.mediaItems = randomMediaItems;
+    _mediaItems = randomMediaItems;
 }
 
 - (User *) randomUser {
@@ -153,5 +177,7 @@
     
     return [NSString stringWithString:s];
 }
+
+
 
 @end
