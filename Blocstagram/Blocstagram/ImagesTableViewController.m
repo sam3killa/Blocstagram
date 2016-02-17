@@ -140,13 +140,11 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        // Delete the row from the data source
         Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
         
-        [[DataSource sharedInstance].mediaItems insertObject:item atIndex:0];
+        [[DataSource sharedInstance].mediaItems exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         
-       // [[DataSource sharedInstance] deleteMediaItem:item];
-        
+        NSLog(@"%@",item);
         
         NSLog(@"Triggered %@", [DataSource sharedInstance].mediaItems);
     }
