@@ -10,6 +10,8 @@
 
 @class Media;
 
+typedef void (^NewItemCompletionBlock)(NSError *error);
+
 @interface DataSource : NSObject
 
 // We want to be able to access this data anywhere so it is a shared instance type
