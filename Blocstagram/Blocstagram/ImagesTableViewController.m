@@ -34,8 +34,24 @@
 
     [[DataSource sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
     
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView registerClass:[MediaTableCell class] forCellReuseIdentifier:@"mediaCell"];
+    
+    
+    
     // Reuse Identifer name for the type of cell we will use in the table view
     [self.tableView registerClass:[MediaTableCell class] forCellReuseIdentifier:@"mediaCell"];
+    
+}
+
+- (void) refreshControlDidFire:(UIRefreshControl *)sender {
+
+    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:^(NSError *error) {
+        [sender endRefreshing];
+    }];
     
 }
 
