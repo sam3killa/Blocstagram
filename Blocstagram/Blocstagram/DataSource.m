@@ -19,7 +19,7 @@
 }
 
 @property (nonatomic, assign) BOOL isRefreshing;
-@property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isLoadingOlderItems;
 
 @end
 
@@ -97,7 +97,7 @@
     
 }
 
-// Request Items Method
+// Request New Items Method
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler{
 
     if (self.isRefreshing == NO) {
@@ -121,6 +121,25 @@
 
 }
 
+// Request Old Items
+- (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
+    if (self.isLoadingOlderItems == NO) {
+        self.isLoadingOlderItems = YES;
+        Media *media = [[Media alloc] init];
+        media.user = [self randomUser];
+        media.image = [UIImage imageNamed:@"1.jpg"];
+        media.caption = [self randomSentence];
+        
+        NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+        [mutableArrayWithKVO addObject:media];
+        
+        self.isLoadingOlderItems = NO;
+        
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+    }
+}
 -(void) addRandomData {
     
     NSMutableArray *randomMediaItems = [NSMutableArray array];
