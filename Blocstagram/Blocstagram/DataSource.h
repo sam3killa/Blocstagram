@@ -18,8 +18,12 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 // Following the Singleton pattern
 + (instancetype) sharedInstance;
 
+// Storing the client id
++ (NSString *) instagramClientID;
+
 // Read only so other classes can't modify it
 @property (nonatomic, strong, readonly) NSMutableArray *mediaItems;
+@property (nonatomic, strong, readonly) NSString *accessToken;
 
 - (void) deleteMediaItem:(Media *)item;
 
