@@ -39,6 +39,28 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     NSString *urlString = [NSString stringWithFormat:@"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token", [DataSource instagramClientID], [self redirectURI]];
     NSURL *url = [NSURL URLWithString:urlString];
     
+    // Add the navigation bar
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [self.view addSubview:navbar];
+
+    UINavigationItem *navItem = [[UINavigationItem alloc] init];
+    navItem.title = @"Login!";
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod:)];
+    navItem.leftBarButtonItem = leftButton;
+    
+//    navbar.items = @[navItem];
+    
+    navbar.items = [NSArray arrayWithObjects: navItem,nil];
+
+    
+    if(navbar) {
+    
+        NSLog(@"NavBar present");
+    }
+    
+    //do something like background color, title, etc you self
+    
     if (url) {
         
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -47,14 +69,24 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     
 }
 
+// Should just take the user back to the home page?
+- (void) backMethod: (id)selector {
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:nil];
+}
+
+// Triggered when user finally logs in this triggers
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
     NSString *urlString = request.URL.absoluteString;
+    
     if ([urlString hasPrefix:[self redirectURI]]) {
     
         NSRange rangeOfAccessTokenParameter = [urlString rangeOfString:@"access_token="];
         NSUInteger indexOfTokenStarting = rangeOfAccessTokenParameter.location + rangeOfAccessTokenParameter.length;
         NSString *accessToken = [urlString substringFromIndex:indexOfTokenStarting];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:LoginViewControllerDidGetAccessTokenNotification object:accessToken];
         
     }

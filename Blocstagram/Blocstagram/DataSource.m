@@ -18,6 +18,8 @@
     NSMutableArray *_mediaItems;
     
 }
+
+// Each user has their own unique accessToken
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, assign) BOOL isRefreshing;
 @property (nonatomic, assign) BOOL isLoadingOlderItems;
@@ -53,17 +55,20 @@
     return self;
 }
 
+//
 - (void) registerForAccessTokenNotification {
     
     [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+       
         self.accessToken = note.object;
         
         [self populateDataWithParameters:nil];
     }];
 }
 
+// Let instagram know who is calling their api
 + (NSString *) instagramClientID {
-    return @"<cc34b0bb8d484fc1ac81ab57bd0ec373>";
+    return @"cc34b0bb8d484fc1ac81ab57bd0ec373";
 }
 
 #pragma mark - Key/Value Observing
@@ -138,11 +143,13 @@
     if (self.accessToken) {
         // only try to get the data if there's an access token
         
+        // Grand Central Dispatch
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             // do the network request in the background, so the UI doesn't lock up
             
             NSMutableString *urlString = [NSMutableString stringWithFormat:@"https://api.instagram.com/v1/users/self/media/recent?access_token=%@", self.accessToken];
             
+            // Responding to potential different api calls
             for (NSString *parameterName in parameters) {
                 // for example, if dictionary contains {count: 50}, append `&count=50` to the URL
                 [urlString appendFormat:@"&%@=%@", parameterName, parameters[parameterName]];
@@ -157,6 +164,7 @@
                 NSError *webError;
                 NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
                 
+                // Deserialize the JSON converting binary data to JSON Data
                 if (responseData) {
                     NSError *jsonError;
                     NSDictionary *feedDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
@@ -164,6 +172,8 @@
                     if (feedDictionary) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             // done networking, go back on the main thread
+                            
+                            // Takes JSON and create objects
                             [self parseDataFromFeedDictionary:feedDictionary fromRequestWithParameters:parameters];
                         });
                     }
@@ -173,6 +183,7 @@
     }
 }
 
+// Method will convert the data into usable data to display in the app.
 - (void) parseDataFromFeedDictionary:(NSDictionary *) feedDictionary fromRequestWithParameters:(NSDictionary *)parameters {
     NSLog(@"%@", feedDictionary);
 }
