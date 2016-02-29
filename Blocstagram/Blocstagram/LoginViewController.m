@@ -61,10 +61,15 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
 // Should just take the user back to the home page?
 - (void) backMethod: (id)selector {
     
-    [self.presentingViewController dismissViewControllerAnimated:YES
-                                                      completion:nil];
-    
-    [self viewDidLoad];
+    NSString *urlString = [NSString stringWithFormat:@"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token", [DataSource instagramClientID], [self redirectURI]];
+    NSURL *url = [NSURL URLWithString:urlString];
+   
+    if (url) {
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:request];
+    }
+
 }
 
 // Triggered when user finally logs in this triggers
