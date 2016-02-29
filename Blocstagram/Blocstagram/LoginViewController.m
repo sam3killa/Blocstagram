@@ -40,8 +40,6 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     NSURL *url = [NSURL URLWithString:urlString];
     
     // Add the navigation bar
-    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    [self.view addSubview:navbar];
 
     UINavigationItem *navItem = [[UINavigationItem alloc] init];
     navItem.title = @"Login!";
@@ -49,17 +47,8 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod:)];
     navItem.leftBarButtonItem = leftButton;
     
-//    navbar.items = @[navItem];
-    
-    navbar.items = [NSArray arrayWithObjects: navItem,nil];
+    self.navigationItem.leftBarButtonItem = leftButton;
 
-    
-    if(navbar) {
-    
-        NSLog(@"NavBar present");
-    }
-    
-    //do something like background color, title, etc you self
     
     if (url) {
         
@@ -74,6 +63,8 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     
     [self.presentingViewController dismissViewControllerAnimated:YES
                                                       completion:nil];
+    
+    [self viewDidLoad];
 }
 
 // Triggered when user finally logs in this triggers
