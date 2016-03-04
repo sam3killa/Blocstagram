@@ -18,4 +18,7 @@
 @property (nonatomic, strong) NSURL *profilePictureURL;
 @property (nonatomic, strong) UIImage *profilePicture;
 
+// A custom initializer to create a User Object with an initialized Dictionary
+- (instancetype) initWithDictionary:(NSDictionary *)userDictionary;
+
 @end

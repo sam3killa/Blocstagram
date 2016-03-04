@@ -60,7 +60,7 @@ static NSParagraphStyle *commentRightAlignStyle;
 @implementation MediaTableCell
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    [super setSelected:NO animated:animated];
 
     // Configure the view for the selected state
 }
@@ -165,6 +165,11 @@ static NSParagraphStyle *commentRightAlignStyle;
     }
     return commentString;
 }
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:NO animated:animated];
+}
+
 
 // Method that calculates the size of our attributed string
 - (CGSize) sizeOfString:(NSAttributedString *) string {
