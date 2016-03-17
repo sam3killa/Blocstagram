@@ -11,13 +11,12 @@
 #import "Comment.h"
 #import "User.h"
 
-@interface MediaTableCell()
+@interface MediaTableCell() <UIGestureRecognizerDelegate>
 
 // Defining the types of elements that will be in our table view cell
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
 @property (nonatomic, strong) UILabel *commentLabel;
-
 
 // Auto-Layout Properties
 @property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
@@ -25,6 +24,9 @@
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *imageWidthConstraint;
 
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @end
 
@@ -221,6 +223,16 @@ static NSParagraphStyle *commentRightAlignStyle;
         
         // Initialize the elements in the table view cell
         self.mediaImageView = [[UIImageView alloc] init];
+        self.mediaImageView.userInteractionEnabled = YES;
+        
+        self.tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapFired:)];
+        self.tapGestureRecognizer.delegate = self;
+        [self.mediaImageView addGestureRecognizer:self.tapGestureRecognizer];
+       
+        self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
+        self.longPressGestureRecognizer.delegate = self;
+        [self.mediaImageView addGestureRecognizer:self.longPressGestureRecognizer];
+        
         self.usernameAndCaptionLabel = [[UILabel alloc]init];
         self.usernameAndCaptionLabel.numberOfLines = 0;
        // self.usernameAndCaptionLabel.backgroundColor = usernameLabelGray;
@@ -284,6 +296,19 @@ static NSParagraphStyle *commentRightAlignStyle;
     return self;
 }
 
+// Creating the action method
+- (void) tapFired:(UITapGestureRecognizer *)sender {
+
+    [self.delegate cell:self didTapImageView:self.mediaImageView];
+
+}
+
+// UIGestureRecognizerDelegate
+
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return self.isEditing == NO;
+}
+
 // Setting the media item
 - (void) setMediaItem:(Media *) mediaItem {
 
@@ -293,6 +318,14 @@ static NSParagraphStyle *commentRightAlignStyle;
     self.commentLabel.attributedText = [self commentString];
 
 }
+
+- (void) longPressFired:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self.delegate cell:self didLongPressImageView:self.mediaImageView];
+    }
+}
+
+
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width {
     // Make a cell

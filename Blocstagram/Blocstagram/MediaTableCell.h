@@ -9,11 +9,19 @@
 #import <UIKit/UIKit.h>
 
 // Add the media class
-@class Media;
+@class Media, MediaTableCell;
+
+@protocol MediaTableCellDelegate <NSObject>
+
+- (void) cell:(MediaTableCell *)cell didTapImageView:(UIImageView *)imageView;
+- (void) cell:(MediaTableCell *)cell didLongPressImageView:(UIImageView *)imageView;
+
+@end
 
 @interface MediaTableCell : UITableViewCell
 
 @property (nonatomic, strong) Media *mediaItem;
+@property (nonatomic, weak) id <MediaTableCellDelegate> delegate;
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width;
 

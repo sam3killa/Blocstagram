@@ -23,6 +23,7 @@
 		8A4292A01C5F1EE700992C2C /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A4292961C5F1EE700992C2C /* 10.jpg */; };
 		8A4292A31C5F1EFA00992C2C /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4292A21C5F1EFA00992C2C /* ImagesTableViewController.m */; };
 		8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6243FD1C62AC2B0043985C /* MediaTableCell.m */; };
+		8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */; };
 		8ABD0C2B1C7E774300A00850 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD0C2A1C7E774300A00850 /* LoginViewController.m */; };
 		8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F291C5F1D50008A3BA7 /* main.m */; };
 		8AC29F2D1C5F1D50008A3BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */; };
@@ -75,6 +76,8 @@
 		8A4292A21C5F1EFA00992C2C /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
 		8A6243FC1C62AC2B0043985C /* MediaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableCell.h; sourceTree = "<group>"; };
 		8A6243FD1C62AC2B0043985C /* MediaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableCell.m; sourceTree = "<group>"; };
+		8A9E054B1C97DC3A00087606 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaFullScreenViewController.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/MediaFullScreenViewController.h"; sourceTree = "<group>"; };
+		8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaFullScreenViewController.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/MediaFullScreenViewController.m"; sourceTree = "<group>"; };
 		8ABD0C291C7E774300A00850 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8ABD0C2A1C7E774300A00850 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8AC29F251C5F1D50008A3BA7 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +180,8 @@
 				8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */,
 				8A6243FC1C62AC2B0043985C /* MediaTableCell.h */,
 				8A6243FD1C62AC2B0043985C /* MediaTableCell.m */,
+				8A9E054B1C97DC3A00087606 /* MediaFullScreenViewController.h */,
+				8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */,
 				8A4292A11C5F1EFA00992C2C /* ImagesTableViewController.h */,
 				8A4292A21C5F1EFA00992C2C /* ImagesTableViewController.m */,
 				8A2D0C031C616C1700203F6D /* User.h */,
@@ -423,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */,
 				8A2D0C0B1C616F6600203F6D /* Comment.m in Sources */,
 				8A2D0C081C616DDE00203F6D /* Media.m in Sources */,
 				8A2D0C0E1C6170E100203F6D /* DataSource.m in Sources */,
