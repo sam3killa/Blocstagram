@@ -30,6 +30,7 @@
     return self;
 }
 
+// Once you tap the cell
 - (void) cell:(MediaTableCell *)cell didTapImageView:(UIImageView *)imageView {
     MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
     
