@@ -1,4 +1,4 @@
 pod 'UICKeyChainStore'
-
+pod 'AFNetworking','~> 2.6'
 
 xcodeproj '/Users/samshih/Desktop/BLOC IO Projects/Blocstagram/Blocstagram/Blocstagram.xcodeproj'
