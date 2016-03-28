@@ -24,9 +24,9 @@
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *imageWidthConstraint;
 
-
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *twoFingerTapGestureRecognizer;
 
 @end
 
@@ -233,6 +233,12 @@ static NSParagraphStyle *commentRightAlignStyle;
         self.longPressGestureRecognizer.delegate = self;
         [self.mediaImageView addGestureRecognizer:self.longPressGestureRecognizer];
         
+//        self.twoFingerTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
+        self.twoFingerTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
+        self.twoFingerTapGestureRecognizer.delegate = self;
+        self.twoFingerTapGestureRecognizer.numberOfTouchesRequired = 2;
+        [self.mediaImageView addGestureRecognizer:self.twoFingerTapGestureRecognizer];
+        
         self.usernameAndCaptionLabel = [[UILabel alloc]init];
         self.usernameAndCaptionLabel.numberOfLines = 0;
        // self.usernameAndCaptionLabel.backgroundColor = usernameLabelGray;
@@ -294,6 +300,13 @@ static NSParagraphStyle *commentRightAlignStyle;
         
     }
     return self;
+}
+
+// Creating action method for double tap
+-(void) doubleTapFired:(UITapGestureRecognizer *)sender{
+    
+    // Run retry method
+    NSLog(@"DoubleTapFired");
 }
 
 // Creating the action method

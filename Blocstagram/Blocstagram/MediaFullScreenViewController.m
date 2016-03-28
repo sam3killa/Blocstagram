@@ -9,6 +9,8 @@
 #import "MediaFullScreenViewController.h"
 #import "Media.h"
 #import "ImagesTableViewController.h"
+#import "ShareUtilities.h"
+#import "UIViewController+Sharing.h"
 
 @interface MediaFullScreenViewController () <UIScrollViewDelegate>
 
@@ -19,8 +21,6 @@
 @end
 
 @implementation MediaFullScreenViewController
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,16 +60,8 @@
 
 - (void) fullSizeButtonPressed {
     
-    NSLog(@"Button Pressed");
-    NSMutableArray *itemsToShare = [NSMutableArray array];
+    [self shareMediaItem:self.media];
 
-    if (self.media.image) {
-        [itemsToShare addObject:self.media.image];
-    }
-    if (itemsToShare.count > 0) {
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
-        [self presentViewController:activityVC animated:YES completion:nil];
-    }
 }
 
 - (void) tapFired:(UITapGestureRecognizer *)sender {

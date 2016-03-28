@@ -14,6 +14,7 @@
 
 // Use "" for local files and <> for external files like pods
 #import <UICKeyChainStore.h>
+#import <AFNetworking.h>
 
 @interface DataSource () {
 
@@ -27,6 +28,8 @@
 @property (nonatomic, assign) BOOL isRefreshing;
 @property (nonatomic, assign) BOOL isLoadingOlderItems;
 @property (nonatomic, assign) BOOL thereAreNoMoreOlderMessages;
+
+@property (nonatomic, strong) AFHTTPRequestOperationManager *instagramOperationManager;
 
 
 @end
@@ -53,6 +56,8 @@
     self = [super init];
     
     if (self) {
+        [self createOperationsManager];
+        
         self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
         
         if (!self.accessToken){
@@ -85,6 +90,21 @@
     }
     
     return self;
+}
+
+// Create Operations Manager
+- (void) createOperationsManager {
+    NSURL *baseURL = [NSURL URLWithString:@"https://api.instagram.com/v1/"];
+    self.instagramOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    
+    AFJSONResponseSerializer *jsonSerializer = [AFJSONResponseSerializer serializer];
+    AFImageResponseSerializer *imageSerializer = [AFImageResponseSerializer serializer];
+    imageSerializer.imageScale = 1.0;
+    
+    AFCompoundResponseSerializer *serializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[jsonSerializer, imageSerializer]];
+    self.instagramOperationManager.responseSerializer = serializer;
+
+
 }
 
 - (NSString *) pathForFilename:(NSString *) filename {
@@ -185,57 +205,25 @@
     if (self.accessToken) {
         // only try to get the data if there's an access token
         
-        // Grand Central Dispatch
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            // do the network request in the background, so the UI doesn't lock up
-            
-            NSMutableString *urlString = [NSMutableString stringWithFormat:@"https://api.instagram.com/v1/users/self/media/recent?access_token=%@", self.accessToken];
-            
-            // Responding to potential different api calls
-            for (NSString *parameterName in parameters) {
-                // for example, if dictionary contains {count: 50}, append `&count=50` to the URL
-                [urlString appendFormat:@"&%@=%@", parameterName, parameters[parameterName]];
-            }
-            
-            NSURL *url = [NSURL URLWithString:urlString];
-            
-            if (url) {
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                
-                NSURLResponse *response;
-                NSError *webError;
-                NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
-                
-                // Deserialize the JSON converting binary data to JSON Data
-                if (responseData) {
-                    NSError *jsonError;
-                    NSDictionary *feedDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-                    
-                    if (feedDictionary) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            // done networking, go back on the main thread
-                            
-                            // Takes JSON and create objects
-                            [self parseDataFromFeedDictionary:feedDictionary fromRequestWithParameters:parameters];
-                            
-                            if (completionHandler) {
-                                completionHandler(nil);
-                            }
-                        });
-
-                    } else if (completionHandler) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            completionHandler(jsonError);
-                        });
-                    }else if (completionHandler) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            completionHandler(webError);
-                        });
-                    }
-
-                }
-            }
-        });
+        NSMutableDictionary *mutableParameters = [@{@"access_token": self.accessToken} mutableCopy];
+        
+        [mutableParameters addEntriesFromDictionary:parameters];
+        
+        [self.instagramOperationManager GET:@"users/self/feed"
+                                 parameters:mutableParameters
+                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                                            [self parseDataFromFeedDictionary:responseObject fromRequestWithParameters:parameters];
+                                        }
+                                        
+                                        if (completionHandler) {
+                                            completionHandler(nil);
+                                        }
+                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                        if (completionHandler) {
+                                            completionHandler(error);
+                                        }
+                                    }];
     }
 }
 
@@ -337,34 +325,21 @@
 // Method to download image for a media item
 - (void) downloadImageForMediaItem: (Media *)mediaItem {
     if (mediaItem.mediaURL && !mediaItem.image) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSURLRequest *request = [NSURLRequest requestWithURL:mediaItem.mediaURL];
-            
-            NSURLResponse *response;
-            NSError *error;
-            NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            
-            if (imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-            
-                if (image) {
-                    mediaItem.image = image;
-                
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
-                        NSUInteger index = [mutableArrayWithKVO  indexOfObject:mediaItem];
-                        [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
-                        
-                        [self saveImages];
-                    });
-
-                } else {
-                
-                    NSLog(@"Error downloading image: %@",error);
-                }
-            }
-            
-        });
+        [self.instagramOperationManager GET:mediaItem.mediaURL.absoluteString
+                                 parameters:nil
+                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                        if ([responseObject isKindOfClass:[UIImage class]]) {
+                                            mediaItem.image = responseObject;
+                                            NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+                                            NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
+                                            [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+                                        }
+                                        
+                                        [self saveImages];
+                                        
+                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                        NSLog(@"Error downloading image: %@", error);
+                                    }];
     }
 }
 
