@@ -127,7 +127,7 @@
 
 // Let instagram know who is calling their api
 + (NSString *) instagramClientID {
-    return @"cc34b0bb8d484fc1ac81ab57bd0ec373";
+    return @"0a418c2844794c51ad46b3c5aabfa2e5";
 }
 
 #pragma mark - Key/Value Observing
@@ -332,7 +332,9 @@
                                             mediaItem.image = responseObject;
                                             NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
                                             NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
-                                            [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+                                            if (index != NSNotFound) {
+                                                [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+                                            }
                                         }
                                         
                                         [self saveImages];
