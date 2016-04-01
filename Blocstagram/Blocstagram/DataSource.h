@@ -26,10 +26,10 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 @property (nonatomic, strong, readonly) NSString *accessToken;
 
 - (void) deleteMediaItem:(Media *)item;
-
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock) completionHandler;
 - (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock) completionHandler;
 - (void) downloadImageForMediaItem: (Media *)mediaItem;
+
 
 
 @end
