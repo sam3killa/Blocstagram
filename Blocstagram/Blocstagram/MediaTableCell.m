@@ -342,7 +342,6 @@ static NSParagraphStyle *commentRightAlignStyle;
 }
 
 
-
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width {
     // Make a cell
     
