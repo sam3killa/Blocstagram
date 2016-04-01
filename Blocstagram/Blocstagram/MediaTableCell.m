@@ -10,6 +10,7 @@
 #import "Media.h"
 #import "Comment.h"
 #import "User.h"
+#import "DataSource.h"
 
 @interface MediaTableCell() <UIGestureRecognizerDelegate>
 
@@ -306,7 +307,9 @@ static NSParagraphStyle *commentRightAlignStyle;
 -(void) doubleTapFired:(UITapGestureRecognizer *)sender{
     
     // Run retry method
-    NSLog(@"DoubleTapFired");
+    //downloadImageForMediaItem
+    
+    [[DataSource sharedInstance] downloadImageForMediaItem:self.mediaItem];
 }
 
 // Creating the action method
