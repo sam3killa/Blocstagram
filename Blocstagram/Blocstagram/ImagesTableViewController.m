@@ -32,17 +32,26 @@
     return self;
 }
 
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
-    if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
-        
-        if (!self.tableView.dragging){
-        [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
-        }
-    }
-}
+//- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//
+//}
 
 -(void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+ 
+    
+    for (UITableViewCell *cell in [self.tableView visibleCells]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        NSLog(@"%@",indexPath);
+        Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
+        
+        [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+        
+        
+    
+    }
 
 }
 
