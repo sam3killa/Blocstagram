@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LikeButton.h"
 
 // Creating Enumeration to Track Fail Downloads
 
@@ -33,6 +34,7 @@ typedef NS_ENUM(NSInteger, MediaDownloadState) {
 @property (nonatomic, strong) NSArray *comments;
 @property (nonatomic, assign) MediaDownloadState downloadState;
 
+@property (nonatomic, assign) LikeState likeState;
 
 - (instancetype) initWithDictionary:(NSDictionary *) mediaDictionary;
 

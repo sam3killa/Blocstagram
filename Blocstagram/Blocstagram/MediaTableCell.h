@@ -16,6 +16,8 @@
 - (void) cell:(MediaTableCell *)cell didTapImageView:(UIImageView *)imageView;
 - (void) cell:(MediaTableCell *)cell didLongPressImageView:(UIImageView *)imageView;
 - (void) cell:(MediaTableCell *)cell didTapWithTwoFingers:(UIImageView *)imageView;
+- (void) cellDidPressLikeButton:(MediaTableCell *)cell;
+
 
 @end
 

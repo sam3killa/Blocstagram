@@ -16,7 +16,7 @@
 #import "ShareUtilities.h"
 #import "UIViewController+Sharing.h"
 
-@interface ImagesTableViewController () <MediaTableCellDelegate>
+@interface ImagesTableViewController () <MediaTableCellDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -35,10 +35,16 @@
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
     if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
+        
+        if (!self.tableView.dragging){
         [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+        }
     }
 }
 
+-(void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+
+}
 
 // Once you tap the cell
 - (void) cell:(MediaTableCell *)cell didTapImageView:(UIImageView *)imageView {
@@ -114,14 +120,19 @@
     if (bottomIndexPath && bottomIndexPath.row == [DataSource sharedInstance].mediaItems.count - 1) {
         // The very last cell is on screen
         [[DataSource sharedInstance] requestOldItemsWithCompletionHandler:nil];
+        
     }
 }
+
+
 
 #pragma mark - UIScrollViewDelegate
 
 // #4
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
     [self infiniteScrollIfNecessary];
+    
 }
 
 // Handle KVO updates
@@ -170,6 +181,18 @@
     }
 }
 
+- (void) cellDidPressLikeButton:(MediaTableCell *)cell {
+    Media *item = cell.mediaItem;
+    
+    [[DataSource sharedInstance] toggleLikeOnMediaItem:item withCompletionHandler:^{
+        if (cell.mediaItem == item) {
+            cell.mediaItem = item;
+        }
+    }];
+    
+    cell.mediaItem = item;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -179,6 +202,7 @@
     
     return cell;
 }
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
