@@ -33,6 +33,7 @@
 
 // Like Button Property
 @property (nonatomic, strong) LikeButton *likeButton;
+@property (nonatomic, strong) UILabel *likeLabel;
 
 
 @end
@@ -254,11 +255,14 @@ static NSParagraphStyle *commentRightAlignStyle;
         self.commentLabel.numberOfLines = 0;
        // self.commentLabel.backgroundColor = commentLabelGray;
         
+        self.likeLabel = [[UILabel alloc] init];
+        self.likeLabel.numberOfLines = 0;
+        
         self.likeButton = [[LikeButton alloc] init];
         [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
         self.likeButton.backgroundColor = usernameLabelGray;
         
-        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton]) {
+        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton, self.likeLabel]) {
     
             // contentView is specific to UITableViewCell
             [self.contentView addSubview:view];
@@ -344,11 +348,16 @@ static NSParagraphStyle *commentRightAlignStyle;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
     self.likeButton.likeButtonState = mediaItem.likeState;
+    self.likeLabel.text = mediaItem.numberOfLikes.stringValue;
 
 }
 
 - (void) likePressed:(UIButton *)sender {
     [self.delegate cellDidPressLikeButton:self];
+    
+    // Increment the number of likes by 1
+    _mediaItem.numberOfLikes = @(_mediaItem.numberOfLikes.intValue+1);
+    
 }
 
 - (void) longPressFired:(UILongPressGestureRecognizer *)sender {
