@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A107BBB1CB5977A000E7998 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */; };
 		8A12E78D1CB21068007ABE86 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E78C1CB21068007ABE86 /* LikeButton.m */; };
 		8A2D0C051C616C1700203F6D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C041C616C1700203F6D /* User.m */; };
 		8A2D0C081C616DDE00203F6D /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C071C616DDE00203F6D /* Media.m */; };
@@ -58,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		6B8521F5FE31A8BDBC3A1413 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8A107BB91CB5977A000E7998 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeCommentView.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ComposeCommentView.h"; sourceTree = "<group>"; };
+		8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeCommentView.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ComposeCommentView.m"; sourceTree = "<group>"; };
 		8A12E78B1CB21068007ABE86 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LikeButton.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/LikeButton.h"; sourceTree = "<group>"; };
 		8A12E78C1CB21068007ABE86 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LikeButton.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/LikeButton.m"; sourceTree = "<group>"; };
 		8A2D0C031C616C1700203F6D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */,
 				8A6243FC1C62AC2B0043985C /* MediaTableCell.h */,
 				8A6243FD1C62AC2B0043985C /* MediaTableCell.m */,
+				8A107BB91CB5977A000E7998 /* ComposeCommentView.h */,
+				8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */,
 				8A9E054B1C97DC3A00087606 /* MediaFullScreenViewController.h */,
 				8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */,
 				8A7A8CA61C9BB951008A7129 /* UIViewController+Sharing.h */,
@@ -435,6 +440,7 @@
 				8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */,
 				8A7A8CA81C9BB951008A7129 /* UIViewController+Sharing.m in Sources */,
 				8A2D0C0B1C616F6600203F6D /* Comment.m in Sources */,
+				8A107BBB1CB5977A000E7998 /* ComposeCommentView.m in Sources */,
 				8A7A8CA51C9BB553008A7129 /* ShareUtilities.m in Sources */,
 				8A2D0C081C616DDE00203F6D /* Media.m in Sources */,
 				8A2D0C0E1C6170E100203F6D /* DataSource.m in Sources */,
