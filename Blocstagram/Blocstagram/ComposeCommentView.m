@@ -28,6 +28,9 @@
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.button setAttributedTitle:[self commentAttributedString] forState:UIControlStateNormal];
         [self.button addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:self.textView];
+        [self.textView addSubview:self.button];
     }
     
     return self;
@@ -90,9 +93,10 @@
     _isWritingComment = isWritingComment;
     
     if (animated) {
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [self layoutSubviews];
-        }];
+
+        } completion:nil];
     } else {
         [self layoutSubviews];
     }
