@@ -60,6 +60,7 @@
     return self;
 }
 
+// Retrieval
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
@@ -71,6 +72,7 @@
         self.caption = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(caption))];
         self.comments = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(comments))];
         self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
+        self.numberOfLikes = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(numberOfLikes))];
 
         if (self.image) {
             self.downloadState = MediaDownloadStateHasImage;
@@ -83,6 +85,7 @@
     return self;
 }
 
+// Storage
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.idNumber forKey:NSStringFromSelector(@selector(idNumber))];
     [aCoder encodeObject:self.user forKey:NSStringFromSelector(@selector(user))];
@@ -91,6 +94,7 @@
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
+    [aCoder encodeObject:self.numberOfLikes forKey:NSStringFromSelector(@selector(numberOfLikes))];
 
 }
 
