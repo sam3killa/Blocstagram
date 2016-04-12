@@ -34,6 +34,7 @@
 		8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6243FD1C62AC2B0043985C /* MediaTableCell.m */; };
 		8A7A8CA51C9BB553008A7129 /* ShareUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A8CA41C9BB553008A7129 /* ShareUtilities.m */; };
 		8A7A8CA81C9BB951008A7129 /* UIViewController+Sharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A8CA71C9BB951008A7129 /* UIViewController+Sharing.m */; };
+		8A7D757F1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D757E1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.m */; };
 		8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */; };
 		8ABD0C2B1C7E774300A00850 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD0C2A1C7E774300A00850 /* LoginViewController.m */; };
 		8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC29F291C5F1D50008A3BA7 /* main.m */; };
@@ -109,6 +110,8 @@
 		8A7A8CA41C9BB553008A7129 /* ShareUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareUtilities.m; sourceTree = "<group>"; };
 		8A7A8CA61C9BB951008A7129 /* UIViewController+Sharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Sharing.h"; sourceTree = "<group>"; };
 		8A7A8CA71C9BB951008A7129 /* UIViewController+Sharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Sharing.m"; sourceTree = "<group>"; };
+		8A7D757D1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ScalingAndCropping.h"; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/UIImage+ScalingAndCropping.h"; sourceTree = "<group>"; };
+		8A7D757E1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ScalingAndCropping.m"; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/UIImage+ScalingAndCropping.m"; sourceTree = "<group>"; };
 		8A9E054B1C97DC3A00087606 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		8ABD0C291C7E774300A00850 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				8A51B07D1CB9828000635B3A /* CameraViewController.m */,
 				8A51B07F1CB98BA400635B3A /* UIImage+ImageUtilities.h */,
 				8A51B0801CB98BA400635B3A /* UIImage+ImageUtilities.m */,
+				8A7D757D1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.h */,
+				8A7D757E1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.m */,
 				8ABD0C291C7E774300A00850 /* LoginViewController.h */,
 				8ABD0C2A1C7E774300A00850 /* LoginViewController.m */,
 				8A2D0C0C1C6170E100203F6D /* DataSource.h */,
@@ -484,6 +489,7 @@
 				8ABD0C2B1C7E774300A00850 /* LoginViewController.m in Sources */,
 				8A1130591CBCBA82000DF7F8 /* CropImageViewController.m in Sources */,
 				8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */,
+				8A7D757F1CBD7436002A5EE6 /* UIImage+ScalingAndCropping.m in Sources */,
 				8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */,
 				8A5DC28B1CAF161900EA3AF6 /* CircleSpinnerView.m in Sources */,
 				8A4292A31C5F1EFA00992C2C /* ImagesTableViewController.m in Sources */,
