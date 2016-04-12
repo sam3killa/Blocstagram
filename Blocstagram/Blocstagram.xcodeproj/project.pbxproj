@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8A079ECF1CB8DBED000E925B /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A079ECE1CB8DBED000E925B /* CameraToolbar.m */; };
 		8A107BBB1CB5977A000E7998 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */; };
+		8A1130561CBCB7BB000DF7F8 /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1130551CBCB7BB000DF7F8 /* CropBox.m */; };
+		8A1130591CBCBA82000DF7F8 /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1130581CBCBA82000DF7F8 /* CropImageViewController.m */; };
+		8A11305C1CBCBE60000DF7F8 /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A11305B1CBCBE60000DF7F8 /* ImageLibraryViewController.m */; };
 		8A12E78D1CB21068007ABE86 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E78C1CB21068007ABE86 /* LikeButton.m */; };
 		8A2D0C051C616C1700203F6D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C041C616C1700203F6D /* User.m */; };
 		8A2D0C081C616DDE00203F6D /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C071C616DDE00203F6D /* Media.m */; };
@@ -66,6 +69,12 @@
 		8A079ECE1CB8DBED000E925B /* CameraToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraToolbar.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/CameraToolbar.m"; sourceTree = "<group>"; };
 		8A107BB91CB5977A000E7998 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeCommentView.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ComposeCommentView.h"; sourceTree = "<group>"; };
 		8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeCommentView.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ComposeCommentView.m"; sourceTree = "<group>"; };
+		8A1130541CBCB7BB000DF7F8 /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CropBox.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/CropBox.h"; sourceTree = "<group>"; };
+		8A1130551CBCB7BB000DF7F8 /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CropBox.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/CropBox.m"; sourceTree = "<group>"; };
+		8A1130571CBCBA82000DF7F8 /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CropImageViewController.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/CropImageViewController.h"; sourceTree = "<group>"; };
+		8A1130581CBCBA82000DF7F8 /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CropImageViewController.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/CropImageViewController.m"; sourceTree = "<group>"; };
+		8A11305A1CBCBE60000DF7F8 /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLibraryViewController.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ImageLibraryViewController.h"; sourceTree = "<group>"; };
+		8A11305B1CBCBE60000DF7F8 /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLibraryViewController.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/ImageLibraryViewController.m"; sourceTree = "<group>"; };
 		8A12E78B1CB21068007ABE86 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LikeButton.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/LikeButton.h"; sourceTree = "<group>"; };
 		8A12E78C1CB21068007ABE86 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LikeButton.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/LikeButton.m"; sourceTree = "<group>"; };
 		8A2D0C031C616C1700203F6D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -212,7 +221,13 @@
 				8A107BBA1CB5977A000E7998 /* ComposeCommentView.m */,
 				8A9E054B1C97DC3A00087606 /* MediaFullScreenViewController.h */,
 				8A9E054C1C97DC3A00087606 /* MediaFullScreenViewController.m */,
+				8A1130571CBCBA82000DF7F8 /* CropImageViewController.h */,
+				8A1130581CBCBA82000DF7F8 /* CropImageViewController.m */,
+				8A11305A1CBCBE60000DF7F8 /* ImageLibraryViewController.h */,
+				8A11305B1CBCBE60000DF7F8 /* ImageLibraryViewController.m */,
 				8A7A8CA61C9BB951008A7129 /* UIViewController+Sharing.h */,
+				8A1130541CBCB7BB000DF7F8 /* CropBox.h */,
+				8A1130551CBCB7BB000DF7F8 /* CropBox.m */,
 				8A7A8CA71C9BB951008A7129 /* UIViewController+Sharing.m */,
 				8A7A8CA31C9BB553008A7129 /* ShareUtilities.h */,
 				8A7A8CA41C9BB553008A7129 /* ShareUtilities.m */,
@@ -452,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A11305C1CBCBE60000DF7F8 /* ImageLibraryViewController.m in Sources */,
 				8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */,
 				8A7A8CA81C9BB951008A7129 /* UIViewController+Sharing.m in Sources */,
 				8A2D0C0B1C616F6600203F6D /* Comment.m in Sources */,
@@ -466,10 +482,12 @@
 				8A12E78D1CB21068007ABE86 /* LikeButton.m in Sources */,
 				8A51B0811CB98BA400635B3A /* UIImage+ImageUtilities.m in Sources */,
 				8ABD0C2B1C7E774300A00850 /* LoginViewController.m in Sources */,
+				8A1130591CBCBA82000DF7F8 /* CropImageViewController.m in Sources */,
 				8AC29F2A1C5F1D50008A3BA7 /* main.m in Sources */,
 				8A6243FE1C62AC2B0043985C /* MediaTableCell.m in Sources */,
 				8A5DC28B1CAF161900EA3AF6 /* CircleSpinnerView.m in Sources */,
 				8A4292A31C5F1EFA00992C2C /* ImagesTableViewController.m in Sources */,
+				8A1130561CBCB7BB000DF7F8 /* CropBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
