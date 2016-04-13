@@ -17,6 +17,7 @@
 #import "UIViewController+Sharing.h"
 #import "CameraViewController.h"
 #import "ImageLibraryViewController.h"
+#import "PostToInstagramViewController.h"
 
 
 @interface ImagesTableViewController () <MediaTableCellDelegate, UIScrollViewDelegate, CameraViewControllerDelegate,ImageLibraryViewControllerDelegate>
@@ -36,6 +37,16 @@
         
     }
     return self;
+}
+
+- (void) handleImage:(UIImage *)image withNavigationController:(UINavigationController *)nav {
+    if (image) {
+        PostToInstagramViewController *postVC = [[PostToInstagramViewController alloc] initWithImage:image];
+        
+        [nav pushViewController:postVC animated:YES];
+    } else {
+        [nav dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 //- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -135,23 +146,11 @@
 }
 
 - (void) imageLibraryViewController:(ImageLibraryViewController *)imageLibraryViewController didCompleteWithImage:(UIImage *)image {
-    [imageLibraryViewController dismissViewControllerAnimated:YES completion:^{
-        if (image) {
-            NSLog(@"Got an image!");
-        } else {
-            NSLog(@"Closed without an image.");
-        }
-    }];
+    [self handleImage:image withNavigationController:imageLibraryViewController.navigationController];
 }
 
 - (void) cameraViewController:(CameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image {
-    [cameraViewController dismissViewControllerAnimated:YES completion:^{
-        if (image) {
-            NSLog(@"Got an image!");
-        } else {
-            NSLog(@"Closed without an image.");
-        }
-    }];
+    [self handleImage:image withNavigationController:cameraViewController.navigationController];
 }
 
 
