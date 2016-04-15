@@ -21,7 +21,7 @@
 
 - (instancetype) init {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(100, 100);
+    layout.itemSize = CGSizeMake(50, 100);
     
     return [super initWithCollectionViewLayout:layout];
 }
