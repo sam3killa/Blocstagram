@@ -17,6 +17,7 @@
 		8A2D0C081C616DDE00203F6D /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C071C616DDE00203F6D /* Media.m */; };
 		8A2D0C0B1C616F6600203F6D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C0A1C616F6600203F6D /* Comment.m */; };
 		8A2D0C0E1C6170E100203F6D /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D0C0D1C6170E100203F6D /* DataSource.m */; };
+		8A418B261CC0A35A00023123 /* NewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A418B251CC0A35A00023123 /* NewCollectionViewCell.m */; };
 		8A4292971C5F1EE700992C2C /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A42928D1C5F1EE700992C2C /* 1.jpg */; };
 		8A4292981C5F1EE700992C2C /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A42928E1C5F1EE700992C2C /* 2.jpg */; };
 		8A4292991C5F1EE700992C2C /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A42928F1C5F1EE700992C2C /* 3.jpg */; };
@@ -87,6 +88,8 @@
 		8A2D0C0A1C616F6600203F6D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		8A2D0C0C1C6170E100203F6D /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		8A2D0C0D1C6170E100203F6D /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		8A418B241CC0A35A00023123 /* NewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewCollectionViewCell.h; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/NewCollectionViewCell.h"; sourceTree = "<group>"; };
+		8A418B251CC0A35A00023123 /* NewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewCollectionViewCell.m; path = "../../../../BLOC IO PROJECTS/Blocstagram/Blocstagram/Blocstagram/NewCollectionViewCell.m"; sourceTree = "<group>"; };
 		8A42928D1C5F1EE700992C2C /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		8A42928E1C5F1EE700992C2C /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		8A42928F1C5F1EE700992C2C /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				8A5DC28A1CAF161900EA3AF6 /* CircleSpinnerView.m */,
 				8A7D75801CBD81F2002A5EE6 /* PostToInstagramViewController.h */,
 				8A7D75811CBD81F2002A5EE6 /* PostToInstagramViewController.m */,
+				8A418B241CC0A35A00023123 /* NewCollectionViewCell.h */,
+				8A418B251CC0A35A00023123 /* NewCollectionViewCell.m */,
 				8A12E78B1CB21068007ABE86 /* LikeButton.h */,
 				8A12E78C1CB21068007ABE86 /* LikeButton.m */,
 				8AC29F2C1C5F1D50008A3BA7 /* AppDelegate.m */,
@@ -476,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A11305C1CBCBE60000DF7F8 /* ImageLibraryViewController.m in Sources */,
+				8A418B261CC0A35A00023123 /* NewCollectionViewCell.m in Sources */,
 				8A9E054D1C97DC3A00087606 /* MediaFullScreenViewController.m in Sources */,
 				8A7A8CA81C9BB951008A7129 /* UIViewController+Sharing.m in Sources */,
 				8A2D0C0B1C616F6600203F6D /* Comment.m in Sources */,
