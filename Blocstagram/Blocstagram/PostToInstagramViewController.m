@@ -210,6 +210,16 @@
         }
     }];
     
+    // Chrome Filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *chromeFilter = [CIFilter filterWithName:@"CIPhotoEffectChrome"];
+        
+        if (chromeFilter) {
+            [chromeFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:chromeFilter.outputImage withFilterTitle:NSLocalizedString(@"Chrome", @"Chrome Filter")];
+        }
+    }];
     // Boom filter
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{

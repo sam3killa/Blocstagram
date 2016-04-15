@@ -10,6 +10,19 @@
 
 @implementation UIImage (ImageUtilities)
 
+
+- (UIImage *) imageByScalingToSize:(CGSize)size andCroppingWithRect:(CGRect)rect {
+
+    // #11
+    UIImage *image = [self imageWithFixedOrientation];
+    image = [image imageResizedToMatchAspectRatioOfSize:size];
+    
+    image = [image imageCroppedToRect:rect];
+    
+    return image;
+}
+
+
 - (UIImage *) imageWithFixedOrientation {
     // Do nothing if the orientation is already correct
     if (self.imageOrientation == UIImageOrientationUp) return [self copy];
