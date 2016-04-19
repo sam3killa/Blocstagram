@@ -10,6 +10,8 @@
 #import "User.h"
 #import "Media.h"
 #import "ComposeCommentView.h"
+#import "MediaTableCell.h"
+#import "DataSource.h"
 
 @interface UserTests : XCTestCase
 
@@ -65,6 +67,38 @@
     
     XCTAssertFalse(comment.isWritingComment, @"Should be no");
     
+}
+
+//NSString *standardResolutionImageURLString = mediaDictionary[@"images"][@"standard_resolution"][@"url"];
+
+
+
+
+- (void)testMediaTableHeight
+
+{
+    
+    Media *mediaItem = [DataSource sharedInstance].mediaItems[0];
+    
+    UIImage *testImage = [UIImage imageNamed:@"Angelina"];
+    mediaItem.image = testImage;
+    
+    CGFloat testHeight = [MediaTableCell heightForMediaItem:mediaItem width:718];
+    
+    CGFloat number = 905.5;
+    
+    XCTAssertEqual(testHeight, number, @"The profile picture should be equal");
+    
+    mediaItem = [DataSource sharedInstance].mediaItems[1];
+    
+    CGFloat testHeight2 = [MediaTableCell heightForMediaItem:mediaItem width:718];
+    
+    CGFloat number2 = 1228;
+    
+    XCTAssertEqual(testHeight2, number2, @"The profile picture should be equal");
+
+
+
 }
 
 @end

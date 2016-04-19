@@ -17,6 +17,8 @@
     
     if (self) {
         
+        NSLog(@"%@",mediaDictionary);
+
         // Storing the properties into each corresponding attribute
         self.idNumber= mediaDictionary[@"id"];
         self.user = [[User alloc] initWithDictionary:mediaDictionary[@"user"]];

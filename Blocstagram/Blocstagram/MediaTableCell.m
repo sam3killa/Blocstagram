@@ -340,6 +340,7 @@ static NSParagraphStyle *commentRightAlignStyle;
     //downloadImageForMediaItem
     
     [[DataSource sharedInstance] downloadImageForMediaItem:self.mediaItem];
+    
 }
 
 // Creating the action method
@@ -359,6 +360,7 @@ static NSParagraphStyle *commentRightAlignStyle;
 - (void) setMediaItem:(Media *) mediaItem {
 
     _mediaItem = mediaItem;
+    
     self.mediaImageView.image = _mediaItem.image;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
