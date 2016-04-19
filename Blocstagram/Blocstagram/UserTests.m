@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "User.h"
+#import "Media.h"
+#import "ComposeCommentView.h"
 
 @interface UserTests : XCTestCase
 
@@ -37,6 +39,32 @@
     XCTAssertEqualObjects(testUser.userName, sourceDictionary[@"username"], @"The username should be equal");
     XCTAssertEqualObjects(testUser.fullName, sourceDictionary[@"full_name"], @"The full name should be equal");
     XCTAssertEqualObjects(testUser.profilePictureURL, [NSURL URLWithString:sourceDictionary[@"profile_picture"]], @"The profile picture should be equal");
+}
+
+- (void)testThatMediaInitializationWorks
+{
+    NSDictionary *mediaDictionary = @{@"id": @"8675309"
+                                       };
+    
+    Media *testMedia = [[Media alloc] initWithDictionary: mediaDictionary];
+    
+    XCTAssertEqualObjects(testMedia.idNumber, mediaDictionary[@"id"],@"The IDs should be equal");
+
+
+}
+
+- (void)testThatCommentComposeWorks
+{
+    
+    ComposeCommentView *comment = [[ComposeCommentView alloc] init];
+    [comment setText:@"Hello"];
+    
+    XCTAssertTrue(comment.isWritingComment,@"Should be yes");
+    
+    [comment setText:NULL];
+    
+    XCTAssertFalse(comment.isWritingComment, @"Should be no");
+    
 }
 
 @end

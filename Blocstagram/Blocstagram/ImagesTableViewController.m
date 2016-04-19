@@ -25,6 +25,9 @@
 @property (nonatomic, weak) UIView *lastSelectedCommentView;
 @property (nonatomic, assign) CGFloat lastKeyboardAdjustment;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+
+
 @end
 
 @implementation ImagesTableViewController
@@ -76,6 +79,10 @@
 - (void) cell:(MediaTableCell *)cell didTapImageView:(UIImageView *)imageView {
     MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
     
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        fullScreenVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
     [self presentViewController:fullScreenVC animated:YES completion:nil];
 }
 
@@ -121,6 +128,10 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+}
+
+- (void) edgeOfScreenTapped {
+
 }
 
 - (void) cameraPressed:(UIBarButtonItem *) sender {
