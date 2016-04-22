@@ -25,6 +25,12 @@
 
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 
+// Auto-Layout Properties
+@property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *usernameAndCaptionLabelHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *imageWidthConstraint;
+
 @end
 
 @implementation PostToInstagramViewController
@@ -60,7 +66,20 @@
         
         self.sendBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send", @"Send button") style:UIBarButtonItemStyleDone target:self action:@selector(sendButtonPressed:)];
         [self addFiltersToQueue];
-
+    
+        
+//        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_previewImageView, _filterCollectionView,_sendButton);
+//        
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_previewImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_filterCollectionView]|" options:kNilOptions metrics:nil views:viewDictionary]];
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_sendButton]|" options:kNilOptions metrics:nil views:viewDictionary]];
+//        
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_previewImageView][_filterCollectionView][_sendButton]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        
     }
     
     return self;
